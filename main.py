@@ -33,10 +33,8 @@ def search_psoriasis_data(user_uuid: str, prompt: Prompt) -> str:
     previousConversation = gpt.build_context_from_previous_conversation(user_uuid)
     articles = gpt.build_context_from_article()
     messages = gpt.build_prompt(question, previousConversation, articles)
-    print(messages)
 
     response = gpt.retrieve_output(messages)
-    print(response)
 
     return response
 
@@ -47,6 +45,8 @@ def create_multiple_choice_questions(user_uuid: str, prompt: Prompt) -> str:
     Use this endpoint to create multiple choice questions based on psoriasis data.
     You can input your queries in natural language.
     """
+    if user_uuid:
+        print('test')
     raise HTTPException(
         detail='Not Implemented',
         status_code=status.HTTP_501_NOT_IMPLEMENTED
